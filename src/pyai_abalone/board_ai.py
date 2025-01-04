@@ -10,7 +10,7 @@ from copy import deepcopy
 from . import constants as const
 from .player_ai import MagisterPlay
 import pygame as pg
-import display as dsp
+from . import display as dsp
 from .model_ai import get_trained_magister_zero
 import numpy as np
 from typing import List, Dict, Any, Union
@@ -26,7 +26,7 @@ ROW_OFFSET = [4, 3, 2, 1, 0, 0, 0, 0, 0]
 ROW_LENGTH = [5, 6, 7, 8, 9, 8, 7, 6, 5]
 
 
-class BoardAI(Board):
+class GameAI(Board):
     """
     board representation for pygame
     
@@ -70,8 +70,9 @@ class BoardAI(Board):
                  player_blue: Dict[str, Any] = const.DEFAULT_PLAYER,
                  player_yellow: Dict[str, Any] = const.DEFAULT_PLAYER):
         if isinstance(configuration, str):
-            configuration = const.CONFIGURATIONS.get(configuration, "classic")
-        super(BoardAI, self).__init__(configuration)
+            configuration = const.CONFIGURATIONS.get(
+                configuration, const.STANDARD)
+        super(GameAI, self).__init__(configuration)
         self.init_conf = deepcopy(configuration)
 
         self.current_human = True

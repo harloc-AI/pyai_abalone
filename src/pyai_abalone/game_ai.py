@@ -6,13 +6,13 @@ import json
 from os import listdir
 
 import pyai_abalone.constants as const
-from pyai_abalone import BoardAI
+from pyai_abalone import GameAI
 
 
 # Game loop
 def main(argv):
     conf, player_blue, player_yellow = script_argv(argv)
-    board = BoardAI(conf, player_blue, player_yellow)
+    board = GameAI(conf, player_blue, player_yellow)
     board.start_game()
 
 

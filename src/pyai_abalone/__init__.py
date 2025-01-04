@@ -6,7 +6,7 @@ Created on Fri Dec 27 10:09:38 2024
 """
 __version__ = "1.0.0"
 
-from .board_ai import BoardAI
+from .board_ai import GameAI
 from .player_ai import MagisterPlay
 from .abalone_ai import NumpyAbalone
 from .model_ai import MagisterZero, get_trained_magister_zero

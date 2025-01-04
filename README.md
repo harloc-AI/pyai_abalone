@@ -1,5 +1,7 @@
 # pyai_abalone
 
+Author: Harald Locke <haraldlocke@gmx.de>
+
 ## Summary
 
 Python Abalone AI based on Alpha-Zero concept
@@ -138,7 +140,7 @@ In order to play against the agent, there are two options to start a game:
 #### Running the class in an own script
 
 ```python
-game = pyai_abalone.Game()
+game = pyai_abalone.GameAI()
 game.start_game()
 ```
 
@@ -157,16 +159,16 @@ python game_ai.py [-h] [-s <settings.json>] [-b <position>]
 | option | description |
 | --- | --- |
 | -h, --help | show this help message and exit |
-| -s <settings.json>, --settings  <settings.json> | .json-file containing the game setup. If provided, options will be primarily taken from that file. All settings not provided within the file, will be set to the other, given arguement values (or their default value if they were not specified at all) |
-| -b <position>, --board <position> | chooses starting positions, available positions are: classic / standard, belgian_daisy, german_daisy, dutch_daisy, swiss_daisy, domination, pyramid, wall / the_wall (default: belgian_daisy) Note: The A.I. was mainly trained on the 'Beglian Daisy' position, so it might play much worse on the other starting positions
-| --blue <player-type> | sets the player for the blue marbles to human or A.I., available options are: human, ai (default: human) |
-| --blue_mcts <integer> | sets the number of Monte-Carlo tree searches performed at every move for the blue player (if it is an A.I). This drastically influences playing strength of the A.I, but also the time it needs to calculate for a move (default: 250) |
-| --blue_depth <integer> | sets the depth of the MCTS search for the blue player (if it is an A.I). For every search the number of 'blue_depth' moves will be performed and the position evaluated afterwards (default: 13) |
-| --blue_probsum <float> | For the root of the MCTS tree only the moves with the highest probabilities summing up to 'blue_probsum' will be considered. For all later nodes this restriction is not in place (default: 0.95)
-| --yellow <player-type> | sets the player for the yellow marbles to human or A.I., available options are: human, ai (default: ai) |
+| -s \<settings.json\>, --settings  \<settings.json\> | .json-file containing the game setup. If provided, options will be primarily taken from that file. All settings not provided within the file, will be set to the other, given arguement values (or their default value if they were not specified at all) |
+| -b \<position\>, --board \<position\> | chooses starting positions, available positions are: classic / standard, belgian_daisy, german_daisy, dutch_daisy, swiss_daisy, domination, pyramid, wall / the_wall (default: belgian_daisy) Note: The A.I. was mainly trained on the 'Beglian Daisy' position, so it might play much worse on the other starting positions |
+| --blue \<player-type> | sets the player for the blue marbles to human or A.I., available options are: human, ai (default: human) |
+| --blue_mcts \<integer\> | sets the number of Monte-Carlo tree searches performed at every move for the blue player (if it is an A.I). This drastically influences playing strength of the A.I, but also the time it needs to calculate for a move (default: 250) |
+| --blue_depth \<integer\> | sets the depth of the MCTS search for the blue player (if it is an A.I). For every search the number of 'blue_depth' moves will be performed and the position evaluated afterwards (default: 13) |
+| --blue_probsum \<float\> | For the root of the MCTS tree only the moves with the highest probabilities summing up to 'blue_probsum' will be considered. For all later nodes this restriction is not in place (default: 0.95) |
+| --yellow \<player-type\> | sets the player for the yellow marbles to human or A.I., available options are: human, ai (default: ai) |
 | --yellow_mcts integer> | sets the number of Monte-Carlo tree searches performed at every move for the yellow player (if it is an A.I). This drastically influences playing strength of the A.I, but also the time it needs to calculate for a move (default: 250) |
-| --yellow_depth <integer> | sets the depth of the MCTS search for the yellow player if it is an A.I. For every search the number of 'yewllow_depth' moves will be performed and the position evaluated afterwards (default: 13) |
-| --yellow_probsum <float> | For the root of the MCTS tree only the moves with the highest probabilities summing up to 'yewllow_probsum' will be considered. For all later nodes this restriction is not in place (default: 0.95) |
+| --yellow_depth \<integer\> | sets the depth of the MCTS search for the yellow player if it is an A.I. For every search the number of 'yewllow_depth' moves will be performed and the position evaluated afterwards (default: 13) |
+| --yellow_probsum \<float\> | For the root of the MCTS tree only the moves with the highest probabilities summing up to 'yewllow_probsum' will be considered. For all later nodes this restriction is not in place (default: 0.95) |
 
 ## GUI
 

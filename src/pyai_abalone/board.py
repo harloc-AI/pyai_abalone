@@ -1,6 +1,6 @@
 import math
 import pygame as pg
-import constants as const
+from . import constants as const
 
 from copy import deepcopy
 

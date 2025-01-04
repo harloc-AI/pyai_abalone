@@ -12,7 +12,7 @@ FONT = pg.font.SysFont("Calibri", 42)
 
 # Directories
 FILE_DIR = os.path.dirname(__file__)
-IMAGES_DIR = os.path.join(FILE_DIR, "../images")
+IMAGES_DIR = os.path.join(FILE_DIR, "images")
 AI_DIR = os.path.join(FILE_DIR, "ai_files")
 
 # Colours
@@ -299,7 +299,7 @@ THE_WALL = (
 CONFIGURATIONS = {
     "standard": STANDARD,
     "classic": STANDARD,
-    "begliandaisy": BELGIAN_DAISY,
+    "belgiandaisy": BELGIAN_DAISY,
     "germandaisy": GERMAN_DAISY,
     "dutchdaisy": DUTCH_DAISY,
     "swissdaisy": SWISS_DAISY,
@@ -380,11 +380,11 @@ optinional arguments:
                         sets the player for the blue marbles to human or A.I.,
                         available options are: human, ai (default: human)
     --blue_mcts <integer>
-                        sets the number of Monte-Carlo tree searches performed
-                        at every move for the blue player (if it is an A.I).
-                        This drastically influences playing strength of the A.I,
-                        but also the time it needs to calculate for a move
-                        (default: 250)
+                        sets the number of simulations for the Monte-Carlo tree
+                        searches performed at every move for the blue player 
+                        (if it is an A.I). This drastically influences playing
+                        strength of the A.I, but also the time it needs to
+                        calculate for a move (default: 250)
     --blue_depth <integer>
                         sets the depth of the MCTS search for the blue player
                         (if it is an A.I). For every search the number of
@@ -401,11 +401,11 @@ optinional arguments:
                         sets the player for the yellow marbles to human or A.I.,
                         available options are: human, ai (default: ai)
     --yellow_mcts integer>
-                        sets the number of Monte-Carlo tree searches performed
-                        at every move for the yellow player (if it is an A.I).
-                        This drastically influences playing strength of the A.I,
-                        but also the time it needs to calculate for a move
-                        (default: 250)
+                        sets the number of simulations for the Monte-Carlo tree
+                        searches performed at every move for the blue player 
+                        (if it is an A.I). This drastically influences playing
+                        strength of the A.I, but also the time it needs to
+                        calculate for a move (default: 250)
     --yellow_depth <integer>
                         sets the depth of the MCTS search for the yellow player
                         if it is an A.I). For every search the number of
