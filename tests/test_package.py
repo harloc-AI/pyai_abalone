@@ -55,6 +55,7 @@ def test_magister_play():
     
     magi_play.make_given_move(next_state)
     magi_play.make_ai_move()
+    magi_play.stop_execution()
     
     # test with maximum depth
     magi_play = pyai_abalone.MagisterPlay(
@@ -66,5 +67,6 @@ def test_magister_play():
         num_threads=4
         )
     magi_play.make_ai_move()
+    magi_play.stop_execution()
 
     

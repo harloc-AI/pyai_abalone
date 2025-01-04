@@ -65,19 +65,26 @@ class MagisterPlay():
         self.mcts_results = {}
         if num_threads is None:
             num_threads = cpu_count()
+        self.num_threads = num_threads
         self.mcts_threads = []
-        if depth_mcts < 1:
-            for _ in range(num_threads):
-                self.mcts_threads.append(
-                    Thread(target=self.mcts_full, args=()))
-        else:
-            for _ in range(num_threads):
-                self.mcts_threads.append(
-                    Thread(target=self.mcts_depth, args=()))
+        self._start_threads()
 
         for mt in self.mcts_threads:
             mt.daemon = True
             mt.start()
+
+    def _start_threads(self):
+        if self.mcts_threads:
+            return
+
+        if self.depth_mcts < 1:
+            for _ in range(self.num_threads):
+                self.mcts_threads.append(
+                    Thread(target=self.mcts_full, args=()))
+        else:
+            for _ in range(self.num_threads):
+                self.mcts_threads.append(
+                    Thread(target=self.mcts_depth, args=()))
 
     def reset(self, starting_position: np.ndarray) -> None:
         """
@@ -90,6 +97,7 @@ class MagisterPlay():
             
         """
         self.game = NumpyAbalone(starting_position)
+        self._start_threads()
 
     def show_state(self, message: Optional[str] = None) -> None:
         """
@@ -327,3 +335,8 @@ class MagisterPlay():
 
         for mt in self.mcts_threads:
             mt.join()
+        self.mcts_threads = []
+
+    def stop_execution(self):
+        self.game.set_game_end(0)
+        self._check_game_ended()

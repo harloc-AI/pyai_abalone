@@ -727,3 +727,9 @@ class NumpyAbalone():
         if self.move_counter[tuple(board.flatten())] >= self.reps_to_draw - 1:
             return True
         return False
+
+    def set_game_end(self, result):
+        if result not in {-1, 0, 1}:
+            return
+        self.result = result
+        self.game_ended = True

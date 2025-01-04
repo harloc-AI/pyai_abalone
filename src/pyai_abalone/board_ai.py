@@ -285,6 +285,8 @@ class GameAI(Board):
             # making an AI move
             self.ai_move()
         pg.quit()
+        for ai in self.ai_players:
+            ai.stop_execution()
 
 
 def record_game(screen) -> None:
