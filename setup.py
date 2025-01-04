@@ -31,7 +31,7 @@ setuptools.setup(
     install_requires=open("requirements.txt", "r").read().split(),
     # include_package_data=True,
     package_data={
-        "pyai_abalone.files": ["*.h5", "*.json"],
+        "pyai_abalone.ai_files": ["*.h5", "*.json"],
         "pyai_abalone.images": ["*.png"]
         },
     long_description=Path("README.md").read_text(),
