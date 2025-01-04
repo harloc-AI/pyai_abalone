@@ -9,7 +9,7 @@ module_name = project_name.replace("-", "_")
 
 setuptools.setup(
     name=module_name,
-    version=os.environ.get("VERSION", "1.0.0"),
+    version=os.environ.get("VERSION", "1.0.1"),
     author=os.environ.get("AUTHOR", "Harald Locke"),
     author_email=os.environ.get(
         "AUTHOR_EMAIL", "haraldlocke@gmx.de"),
