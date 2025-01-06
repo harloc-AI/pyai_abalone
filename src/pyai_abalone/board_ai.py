@@ -95,6 +95,8 @@ class GameAI(Board):
             self.pyellow_human = True
             self.pyellow = None
 
+        self.counts = 0
+
     def _setup_ai(self, ai_config) -> MagisterPlay:
         model = get_trained_magister_zero()
         ai = MagisterPlay(
@@ -161,13 +163,14 @@ class GameAI(Board):
         last, yellow's board state will be updated and vice versa.
         """
         self.update()
+        self.counts += 1
         self.check_current_human()
 
         if self.current_player == self.pyellow and not self.pyellow_human:
-            self.pyellow.make_given_move(self._board_into_array())
+            _ = self.pyellow.make_given_move(self._board_into_array())
 
         if self.current_player == self.pblue and not self.pblue_human:
-            self.pblue.make_given_move(self._board_into_array())
+            _ = self.pblue.make_given_move(self._board_into_array())
 
     def ai_move(self) -> None:
         """

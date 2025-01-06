@@ -21,11 +21,13 @@ def script_argv(argv):
     player_blue = {
         const.PLAYER_TYPE: const.HUMAN,
         const.MCTS_NUMBER: const.MCTS_NUMBER_DEFAULT,
+        const.MCTS_DEPTH: const.MCTS_DEPTH_DEFAULT,
         const.PROB_SUM: const.PROB_SUM_DEFAULT
         }
     player_yellow = {
         const.PLAYER_TYPE: const.AI,
         const.MCTS_NUMBER: const.MCTS_NUMBER_DEFAULT,
+        const.MCTS_DEPTH: const.MCTS_DEPTH_DEFAULT,
         const.PROB_SUM: const.PROB_SUM_DEFAULT
         }
 
@@ -33,8 +35,8 @@ def script_argv(argv):
         opts, args = getopt.getopt(
             argv,"hs:b:",
             ["help", "settings", "board=",
-             "blue=", "blue_mcts=", "blue_probsum=",
-             "yellow=", "yellow_mcts=", "yellow_probsum="])
+             "blue=", "blue_mcts=", "blue_depth=", "blue_probsum=",
+             "yellow=", "yellow_mcts=", "yellow_depth=", "yellow_probsum="])
     except getopt.GetoptError:
         print(const.ARGV_HELP)
         sys.exit(2)
@@ -55,13 +57,17 @@ def script_argv(argv):
             player_blue[const.PLAYER_TYPE] = check_player_type(arg)
         elif opt == "blue_mcts":
             player_blue[const.MCTS_NUMBER] = check_mcts_num(arg)
+        elif opt == "blue_depth":
+            player_blue[const.MCTS_DEPTH] = check_mcts_num(arg)
         elif opt == "blue_probsum":
             player_blue[const.PROB_SUM] = check_prob_sum(arg)
         elif opt == "yellow":
             player_yellow[const.MODEL_TYPE] = check_model_type(arg)
         elif opt == "yellow_mcts":
             player_yellow[const.MCTS_NUMBER] = check_mcts_num(arg)
-        elif opt == "blue_probsum":
+        elif opt == "yellow_depth":
+            player_yellow[const.MCTS_DEPTH] = check_mcts_num(arg)
+        elif opt == "yellow_probsum":
             player_yellow[const.PROB_SUM] = check_prob_sum(arg)
     
     if settings_file is not None and settings_file in listdir():

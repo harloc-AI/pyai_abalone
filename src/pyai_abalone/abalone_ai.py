@@ -7,6 +7,7 @@ Created on Wed Feb 15 13:50:06 2023
 
 from colorama import Fore, Style
 from collections import defaultdict
+from copy import deepcopy
 from .constants import MOVE_IDS
 import numpy as np
 from .starting_positions import BELGIAN_DAISY
@@ -50,9 +51,9 @@ class NumpyAbalone():
             used to check repetitions of moves
         turn_number: int, (defaults to 1). number of the current turn
         noloss_turns: int, (defaults to 0). number of turns without a marble
-            loss
+            loss for the current game (depending on 'board')
         noloss_moves: int, (defaults to 0). number of moves without a marble
-            loss
+            loss for the current game (depending on 'board')
     """
     multi_move = 3  # maybee change to variable size in future
     marble_loss_end = 6  # maybee change to variable size in future
@@ -71,7 +72,8 @@ class NumpyAbalone():
                  noloss_turns: int = 0,
                  noloss_moves: int = 0):
 
-        self.board = board
+        # deepcopy to keep simulations independent
+        self.board = deepcopy(board)
 
         self.black_loss = self.marble_max - np.sum(
             np.where(self.board == 2, 1, 0))
@@ -79,11 +81,13 @@ class NumpyAbalone():
             np.where(self.board == 1, 1, 0))
 
         # game state in result
-        self.move_history = move_history
+        # deepcopy to keep simulations independent
+        self.move_history = deepcopy(move_history)
         self.move_hist_save = move_hist_save
         if self.move_hist_save and len(self.move_history) == 0:
             self.move_history.append(self.board)
-        self.move_counter = move_counter
+        # deepcopy to keep simulations independent
+        self.move_counter = deepcopy(move_counter)
         self.turn_number = turn_number
         self.noloss_turns = noloss_turns
         self.noloss_moves = noloss_moves
